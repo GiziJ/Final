@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/witw.png" />
+    <link rel="stylesheet" href="sytles/styles.css" />
+    <script src="/js/index.js"></script>
+    <title>Where in The World?</title>
+  </head>
+  <body>
+    <header>
+      <div class="title">Where in the World?</div>
+      <div class="dark-mode-toggle">Dark Mode</div>
+    </header>
+
+    <div class="container">
+      <div class="search-bar"><!-- Add your search bar here --></div>
+      <div class="filter">
+        <label for="region-filter">Filter by Region:</label>
+        <select id="region-filter">
+          <option value="all">All</option>
+          <option value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+      <div class="countries-grid" id="countries-grid">
+        <!-- Country items will be dynamically added here -->
+      </div>
+    </div>
+  </body>
+</html>
