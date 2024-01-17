@@ -1,8 +1,14 @@
 body {
-  font-family: "Arial", sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode body {
+  background-color: #333;
+  color: rgb(185, 183, 183);
 }
 
 header {
@@ -12,23 +18,61 @@ header {
   background-color: #333;
   color: white;
   padding: 15px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: auto;
   padding: 20px;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
 }
 
-.dark-mode-toggle {
-  cursor: pointer;
-  color: white;
+.search-filter{
+  display: flex;
+  justify-content: space-between;
+  justify-self: inherit;
+}
+
+.dark-mode .title{
+  color: rgb(185, 183, 183);
+}
+
+.dark-mode body {
+  background-color: #222;
+  color: rgb(185, 183, 183);
+}
+
+.dark-mode .container {
+  background-color: #222;
+}
+
+.dark-mode .country-item {
+  border: 1px solid #555;
+}
+
+.dark-mode .country-info {
+  color: #888;
+}
+
+.dark-mode .country-name{
+  color: rgb(185, 183, 183);
+}
+
+.dark-mode .dark-mode-toggle {
+  color: rgb(185, 183, 183);
 }
 
 .filter {
   margin-bottom: 15px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode .filter {
+  background-color: #222;
+  color: rgb(185, 183, 183);
 }
 
 .countries-grid {
@@ -42,6 +86,7 @@ header {
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  transition: border-color 0.3s, background-color 0.3s;
 }
 
 .country-item img {

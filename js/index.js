@@ -1,37 +1,40 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const darkModeToggle = document.querySelector(".dark-mode-toggle");
   const countriesGrid = document.getElementById("countries-grid");
   const regionFilter = document.getElementById("region-filter");
+  const searchInput = document.getElementById('search-input');
 
-  // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint
-  const apiEndpoint = "https://restcountries.com/v3.1/all";
+  const apiEndpoint = "/api/worldapi.txt";
 
-  // Fetch countries data from the API
+  let allCountries = []; 
+
   async function fetchCountries() {
     try {
       const response = await fetch(apiEndpoint);
       const data = await response.json();
-      displayCountries(data);
+      allCountries = Object.values(data);
+      displayCountries(allCountries);
     } catch (error) {
-      console.error("Error fetching countries:", error);
+      console.error('Error fetching countries:', error);
     }
   }
 
-  // Display countries in the grid
+  //grid
   function displayCountries(countries) {
-    countriesGrid.innerHTML = "";
+    countriesGrid.innerHTML = '';
 
-    countries.forEach((country) => {
+    countries.forEach(country => {
       const countryItem = document.createElement("div");
       countryItem.classList.add("country-item");
 
       const flagImage = document.createElement("img");
-      flagImage.src = country.flag;
-      flagImage.alt = `${country.name} Flag`;
+      flagImage.src = country.flags.png || 'placeholder.jpg';
+      flagImage.alt = `${country.name.common} Flag`;
 
       const countryName = document.createElement("div");
       countryName.classList.add("country-name");
-      countryName.textContent = country.name;
+      countryName.textContent = country.name.common;
 
       const countryPopulation = document.createElement("div");
       countryPopulation.classList.add("country-info");
@@ -43,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const countryCapital = document.createElement("div");
       countryCapital.classList.add("country-info");
-      countryCapital.textContent = `Capital: ${country.capital}`;
+      countryCapital.textContent = `Capital: ${country.capital[0]}`;
 
       countryItem.appendChild(flagImage);
       countryItem.appendChild(countryName);
@@ -55,25 +58,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Event listener for dark mode toggle
-  darkModeToggle.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
+  //dark mode
+  darkModeToggle.addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
   });
 
-  // Event listener for region filter
-  regionFilter.addEventListener("change", function () {
+  //filter
+  regionFilter.addEventListener('change', function () {
     const selectedRegion = regionFilter.value;
-    if (selectedRegion === "all") {
-      fetchCountries();
+    if (selectedRegion === 'all') {
+      displayCountries(allCountries);
     } else {
-      // Filter countries based on the selected region
-      const filteredCountries = countries.filter(
-        (country) => country.region === selectedRegion
-      );
+      const filteredCountries = allCountries.filter(country => country.region === selectedRegion);
       displayCountries(filteredCountries);
     }
   });
 
-  // Initial fetch to load all countries
+  //search
+  searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredCountries = allCountries.filter(country => country.name.common.toLowerCase().includes(searchTerm));
+    displayCountries(filteredCountries);
+  });
+
   fetchCountries();
 });
