@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/x-icon" href="/img/witw.png" />
   <link rel="stylesheet" href="/sytles/styles.css" />
-  <script src="/js/index.js"></script>
+  <script src="/js/index.js" defer></script>
   <title>Where in The World?</title>
 </head>
 
 <body>
-  <header>
+  <div class="body">
+    <header class="header">
     <div class="title">Where in the World?</div>
     <div class="dark-mode-toggle">Dark Mode</div>
-  </header>
+    </header>
 
-  <div class="container">
-    <div class="search-filter">
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Search by country...">
-    </div>
-    <div class="filter">
-      <label for="region-filter">Filter by Region:</label>
-      <select id="region-filter">
-        <option value="all">All</option>
-        <option value="Antarctic">Antarctic</option>
-        <option value="Africa">Africa</option>
-        <option value="Americas">Americas</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-      </select>
-    </div>
-    </div>
-    <div class="countries-grid" id="countries-grid">
+    <div class="container">
+      <div class="search-filter">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search by country...">
+        </div>
+        <div class="filter">
+          <label for="region-filter">Filter by Region:</label>
+          <select id="region-filter">
+            <option value="all">All</option>
+            <option value="Antarctic">Antarctic</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">Americas</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </div>
+      </div>
+      <div class="countries-grid" id="countries-grid">
+      </div>
     </div>
   </div>
 </body>
